@@ -1,0 +1,89 @@
+body {
+	font-size: 24px;
+	color: #ffffff !important;
+	font-family: Arial !important;
+}
+
+
+/*my grid is from https://grid.layoutit.com/?id=Ec7HqEL */
+.grid-container {
+	display: grid;
+	grid-template-columns: minmax(120px, 1000px) minmax(120px, 1000px) minmax(120px, 1000px) 360px;
+	grid-template-rows: auto auto auto 50px;
+	gap: 1px 1px;
+	grid-template-areas: "body body body side_bar""body body body side_bar""body body body side_bar""footer footer footer footer";
+}
+
+.footer {
+	grid-area: footer;
+	border: 1px;
+	border-style: solid;
+}
+
+.side_bar {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: max-content 640px auto;
+	gap: 1px 1px;
+	grid-template-areas: "search_form""results""rest";
+	grid-area: side_bar;
+	border: 1px;
+	border-style: solid;
+}
+
+.search_form {
+	grid-area: search_form;
+}
+
+.results {
+	grid-area: results;
+}
+
+.rest {
+	grid-area: rest;
+}
+
+.body {
+	display: grid;
+	grid-template-columns: 310px minmax(120px, 1500px);
+	grid-template-rows: auto auto;
+	gap: 1px 1px;
+	grid-template-areas: "logo header""inner_body inner_body";
+	grid-area: body;
+}
+
+.logo {
+	grid-area: logo;
+	/*display: table;*/
+}
+
+.header {
+	grid-area: header;
+}
+
+.inner_body {
+	grid-area: inner_body;
+}
+
+fieldset {
+	border: 0;
+	text-align: center;
+}
+
+#searched_text {
+	width: 90%;
+}
+
+#button_search {
+	width: 45%;
+}
+
+#language {
+	width: 45%;
+}
+
+#child {
+
+	vertical-align: middle;
+
+}
