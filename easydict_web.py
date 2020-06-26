@@ -1,8 +1,12 @@
+# main imports
 import cherrypy
+# imports from my other files with classes, methods and confs
+from easydict_web_conf import conf
 from html_generator import db_search, CreateHtml
+from settings import file_path
 
 create_html = CreateHtml()
-main_site = open("main_site.html", "r").read()
+main_site = open(file_path("main_site.html"), "r", encoding="utf8").read()
 
 
 class EasyDictWeb(object):
@@ -41,4 +45,4 @@ class StringGenerator:
 if __name__ == '__main__':
 	easydict = EasyDictWeb()
 	easydict.searchengine = SearchEngine()
-	cherrypy.quickstart(easydict, '/', "easydict_web.conf")
+	cherrypy.quickstart(easydict, '/', conf)

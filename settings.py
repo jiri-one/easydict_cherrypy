@@ -4,14 +4,20 @@ from tinydb.middlewares import CachingMiddleware
 # import my ORJSON extension for TinyDB
 from orjson_storage import ORJSONStorage
 # import to set current working directory
-from os import getcwd
+from os import path, chdir
+from glob import glob
 
 # set current working directory
-cwd = getcwd() + "/"
-cwd_static = cwd + "static/"
+cwd = path.dirname(path.abspath(__file__))
+chdir(cwd)
+
+def file_path(file_name):
+	"""This function return full absolute path of given file_name, but it works correctly only when the filename is unique in all folders and subfolders!!!"""
+	file_abs_path = path.abspath(glob(f"**/{file_name}", recursive=True)[0])
+	return file_abs_path
 
 # main db with eng-cze dict (name just db, but table is eng_cze and EasyDict works with that table)
-db = TinyDB(f'{cwd}eng-cze.json', storage=CachingMiddleware(ORJSONStorage))
+db = TinyDB(file_path("eng-cze.json"), storage=CachingMiddleware(ORJSONStorage))
 eng_cze = db.table('eng_cze')
 
 # second db to restore program settings (name prefdb, with just _default table)
