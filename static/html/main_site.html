@@ -1,0 +1,61 @@
+<!DOCTYPE html> <html>
+
+<head>
+	<link rel="stylesheet" href="/static/css/easydict_styles.css">
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython_stdlib.js"></script>
+</head>
+
+<body style="background-color:#2d2d2d;color:#000000;" onload="brython(1)">
+	<script type="text/python" src="/static/brython/ed_ajax.py" />
+	</script>
+
+	<div class="grid-container">
+		<div class="footer">footer</div>
+		<div class="side_bar">
+			<div class="search_form">
+				<fieldset>
+					<input type="text" name="searched_text" size="10" maxlength="20" id="searched_text" />
+					<button type="submit" id="button_search">Search</button>
+					<select id="language">
+						<option>English</option>
+						<option>Czech</option>
+					</select>
+				</fieldset>
+				<fieldset>
+					<label>
+						<input type="radio" id="whole_word" name="optionsRadios" value="whole_word" checked="" />Whole word</label>
+					<label>
+						<input type="radio" id="fullscreen" name="optionsRadios" value="fullscreen" />Fulltext</label>
+				</fieldset>
+			</div>
+			<div class="results" id="results" style="overflow-y:scroll; overflow-x:hidden; height:640px;">The results of search will be here:</div>
+			<div class="rest">
+				<hr />News: TBA</div>
+		</div>
+		<div class="body">
+			<div class="logo">
+			<div id="child"><img src="/static/images/ed_icon.png" alt="" width="284" height="285" />
+			</div>
+			</div>
+			<div class="header">
+				<h1 style="text-align: center;"><span style="font-weight: 400;"><strong>Welcome to EasyDict</strong></span></h1>
+				<h2 style="text-align: center;">The first open source translator which is completely open with dictionary data too.</h2>
+			</div>
+			<div class="inner_body">
+				<hr />
+				<p>C&iacute;lem projektu EasyDict je poskytnout uživatelům n&aacute;stroje pro překlad mezi různ&yacute;mi jazyky. V&scaron;echny n&aacute;stroje mus&iacute; b&yacute;t kompletně s otevřen&yacute;mi zdrojov&yacute;mi k&oacute;dy (pod licenc&iacute; <a title="GPL3.0" href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL3.0</a>) a v&scaron;echna slovn&iacute;kov&aacute; data mus&iacute; b&yacute;t otevřen&aacute; tak&eacute; (pod licenc&iacute; <a title="GNU/FDL" href="https://www.gnu.org/licenses/fdl-1.3.html" target="_blank" rel="noopener">GNU/FDL</a>).<br />Zat&iacute;m je k dispozici slovn&iacute;k pro překlad z anglick&eacute;ho do česk&eacute;ho jazyka (a obr&aacute;ceně), kter&yacute; vych&aacute;z&iacute; z projektu <a title="http://svobodneslovniky.cz" href="http://svobodneslovniky.cz" target="_blank" rel="noopener">http://svobodneslovniky.cz</a>. D&aacute;le jsou k dispozizi prvn&iacute; dvě aplikace, kter&eacute; umožňuj&iacute; použ&iacute;t&iacute; slovn&iacute;ků (viz n&iacute;že).</p>
+				<p><strong>Aktu&aacute;ln&iacute; stav -&gt; prvn&iacute; f&aacute;ze:<br /></strong>V t&eacute;to prvn&iacute; f&aacute;zi projektu jsou k dispozici dvě aplikace, kter&eacute; je možn&eacute; využ&iacute;t pro překlad (zat&iacute;m opravdu pouze mezi anglick&yacute;m a česk&yacute;m jazykem). V přvn&iacute; řadě můžete využ&iacute;t tuto str&aacute;nku, na kter&eacute; můžete využ&iacute;t&nbsp; EasyDict v jeho webov&eacute; verzi (v pravo). Webov&aacute; verze je napsan&aacute; v Pythonu, CherryPy a Brythonu. <br />D&aacute;le je k dispozici ke stažen&iacute; desktopov&aacute; verze napsan&aacute; v Pythonu, PyGObjectu, GTK3, kter&aacute; um&iacute; překl&aacute;dat stejně, jako tato webov&aacute; verze, ale m&aacute; i nějak&eacute; př&iacute;jemněj&scaron;&iacute; funkce nav&iacute;c (např&iacute;klad překlad př&iacute;mo ze syst&eacute;mov&eacute; schr&aacute;nky, tedy stač&iacute; kdekoliv v syst&eacute;mu zkop&iacute;rovat text - třeba pomoc&iacute; Control+C - a pokud je otevřen&eacute; okno aplikace EasyDict, tak překlad proběhne automaticky).<br />Obě verze aplikace použ&iacute;vaj&iacute; stejn&yacute; datab&aacute;zov&yacute; z&aacute;klad, kter&yacute;m je TinyDB s vlastn&iacute;m roz&scaron;&iacute;řen&iacute;m pro orjson (dnes nejrychlej&scaron;&iacute; implementace json form&aacute;tu pro Python). Zat&iacute;m se mi zd&aacute; tato varianta jako nejlep&scaron;&iacute; a dostačuj&iacute;c&iacute;, ale v dal&scaron;&iacute;ch f&aacute;z&iacute;ch projektu může b&yacute;t použita i jin&aacute; datab&aacute;ze.<br />Obě zm&iacute;něn&eacute; aplikace jsou ve st&aacute;diu alfa verze a budou potřebovat je&scaron;tě nějak&eacute; laděn&iacute; a samozřejmě doplněn&iacute; někter&yacute;ch funkc&iacute;, ale pro samotn&yacute; překlad už funguj&iacute; dobře (pokud byste na&scaron;li nějakou chybu, tak ji nev&aacute;hejte nahl&aacute;sit).</p>
+				<p><strong>Budouc&iacute; stav -&gt; druh&aacute; f&aacute;ze:</strong><br />Vytvořen&iacute; co možn&aacute; nejjednodu&scaron;&scaron;&iacute;ho a uživatelsky př&iacute;větiv&eacute;ho <a title="CMS" href="https://cs.wikipedia.org/wiki/CMS" target="_blank" rel="noopener">CMS</a>, kter&yacute; umožn&iacute; uživatelům upravovat st&aacute;vaj&iacute;c&iacute; nebo vkl&aacute;dat nov&eacute; překlady. V t&eacute;to f&aacute;zi bych chtěl testov&aacute;n&iacute; st&aacute;le je&scaron;tě omezit na anglicko-česk&yacute; slovn&iacute;k. Mus&iacute; se tak&eacute; naj&iacute;t nějak&yacute; dobrovoln&iacute;k nebo dobrovoln&iacute;ci, kteř&iacute; by autorizovali nov&eacute; zaslan&eacute; překlady (nicm&eacute;ně když tak si vystač&iacute;m s&aacute;m a moje kamar&aacute;dka Alex z Anglie, kter&aacute; si t&iacute;m procvič&iacute; če&scaron;tinu a zajist&iacute; maxim&aacute;ln&iacute; kvalitu anglick&eacute;ho překladu), kter&eacute; by se n&aacute;sledně dostali do slovn&iacute;ku. </p>
+				<p><strong>Budouc&iacute; stav -&gt; třet&iacute; f&aacute;ze:</strong><br />Připravit obě aplikace i CMS na použit&iacute; dal&scaron;&iacute;ch slovn&iacute;ků a zač&iacute;t propagovat EasyDict kdekoliv po světě, aby vznikaly dal&scaron;&iacute; otevřen&eacute; slovn&iacute;ky a komunita okolo nich.</p>
+				<hr />
+				<h2 style="text-align: center;">Podpořte projekt EasyDict!</h2>
+				<p style="text-align: center;">Tento otevřen&yacute; projekt je vytv&aacute;řen ve voln&eacute;m čase jedn&iacute;m člověkem (jehož jm&eacute;no najdete v patičce). Budu r&aacute;d, pokud se rozhodnete mě jakkoliv v m&eacute;m &uacute;s&iacute;l&iacute; podpořit finančně. N&iacute;že uv&aacute;d&iacute;m možnosti, kter&yacute;mi tak můžete učinit. Pokud bych viděl, že je o projekt a jeho vizi z&aacute;jem, tak v budoucnu můžou přib&yacute;t i dal&scaron;&iacute; možnosti podpory (např. přes Startovač a nebo třeba Patreon).</p>
+				<p style="text-align: center;">Č&iacute;slo bankovn&iacute;ho &uacute;čtu: 100337997/2250<br />IBAN: CZ71 2250 0000 0001 0033 7997<br />Bitcoin adresa: 16tpbHNWghAgovpxxN63sHsf7P1tyH4vyd<br />Litecoin adresa: LMhUwNiTDqA9WKE3SuboEdddzK2Eo93gKe<br />(V př&iacute;padě z&aacute;jmu mohu přidat adresy i na dal&scaron;&iacute; cryptoměny, nebojte se si o ně napsat)</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
