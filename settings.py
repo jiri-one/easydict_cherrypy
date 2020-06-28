@@ -16,6 +16,9 @@ def file_path(file_name):
 	file_abs_path = path.abspath(glob(f"**/{file_name}", recursive=True)[0])
 	return file_abs_path
 
+
+		
+
 # main db with eng-cze dict (name just db, but table is eng_cze and EasyDict works with that table)
 db = TinyDB(file_path("eng-cze.json"), storage=CachingMiddleware(ORJSONStorage))
 eng_cze = db.table('eng_cze')
