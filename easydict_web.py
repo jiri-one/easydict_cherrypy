@@ -30,7 +30,7 @@ class SearchEngine(object):
 			return "Nothing was found or bad input."
 	
 	def validate_searchengine_input(self, language, searched_text, fulltext):
-		"""This function is here for valitadion input from ajax and normalize the input for search in db."""
+		"""This method is here for valitadion input from ajax and normalize the input for search in db."""
 		#language check
 		if language == "Czech":
 			language = "cze"
