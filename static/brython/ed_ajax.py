@@ -19,6 +19,6 @@ def ajax_post(button_search):
 def hit_enter(ev):
 	if ev.keyCode == 13:
 		ajax_post(None)
-
+		
 document["button_search"].bind("click", ajax_post)
 document["searched_text"].bind("keypress", hit_enter)

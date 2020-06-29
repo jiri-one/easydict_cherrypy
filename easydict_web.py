@@ -25,7 +25,7 @@ class SearchEngine(object):
 				html = create_html.finish_html(results)
 				return html
 			except:
-				return "Nothing was found or bad input."
+				return "Nothing was found or bad input. Try to search just one word."
 		else:
 			return "Nothing was found or bad input."
 	
