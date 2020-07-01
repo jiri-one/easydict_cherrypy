@@ -24,7 +24,6 @@ class EasyDictWeb(object):
 		main_site = open(file_path(f"index_{cherrypy.session['lang']}.html"), "r", encoding="utf8").read()
 		print(cherrypy.url(relative=True))
 		return main_site
-	
 
 @cherrypy.expose
 class SearchEngine(object):
@@ -57,23 +56,6 @@ class SearchEngine(object):
 		if len(searched_text.split()) == 1: #check if the input is just one word
 			print(language, searched_text, fulltext)
 			return language, searched_text, fulltext	
-
-class StringGenerator:
-	@cherrypy.expose
-	def index(self, **kwargs):
-		if 'searched_text' in kwargs:
-			results = db_search("eng", kwargs["searched_text"], True)
-			html = create_html.finish_html(results)
-			print(kwargs)
-			return html
-		else:
-			#return create_html.default_html
-			return new_html
-
-	@cherrypy.expose
-	def generate(self, my_text):
-		print(my_text)
-
 
 if __name__ == '__main__':
 	easydict = EasyDictWeb()
