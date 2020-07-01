@@ -12,8 +12,8 @@ main_site = open(file_path("index_cze.html"), "r", encoding="utf8").read()
 class EasyDictWeb(object):
 	@cherrypy.expose("test")
 	def index(self, **kwargs):
-		try:
-			if cherrypy.session["lang"] != kwargs["lang"] and kwargs["lang"] in ["cze", "eng"]:
+		try: # this condition and try statement is necessary for set language correctly; it check: if the ?lang=XXX is changed and if XXX is in known languages, then change default language. Because kwargs["lang"] maybe do not exists, then I need to "try:" it firstly
+			if cherrypy.session["lang"] != kwargs["lang"] and kwargs["lang"] in ["cze", "eng"]: # in the future, this small list will be replaced from with DB entries
 				cherrypy.session["lang"] = kwargs["lang"]
 		except:
 			pass
