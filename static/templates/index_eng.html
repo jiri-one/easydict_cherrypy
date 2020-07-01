@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title>EasyDict - open source translator</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/static/templates/reset.css">
+	<link rel="stylesheet" href="/static/templates/my_styles.css">
+	<script src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython_stdlib.js"></script>
+	<link rel="shortcut icon" href="/static/images/ed_tray_icon.svg" />
+</head>
+
+<body class="container" onload="brython(1)">
+<script type="text/python" src="/static/brython/ed_ajax.py" /></script>
+	<header>
+		<img align="left" src="/static/images/ed_icon.png" alt="" width="100" height="100" />
+		<h1>Welcome to EasyDict</h1>
+		The first open source translator which is completely open with dictionary data too.
+	</header>
+	<main>
+		<p>
+Cílem projektu EasyDict je poskytnout uživatelům nástroje pro překlad mezi různými jazyky.
+The goal of the EasyDict project is to provide users with tools for translation between different languages.
+
+All tools have to be completely open source (licenced by <a title="GPL3.0" href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL3.0</a>) and all dictionary entries have to be open too (licenced by <a title="GNU/FDL" href="https://www.gnu.org/licenses/fdl-1.3.html" target="_blank" rel="noopener">GNU/FDL</a>).<br />
+Dictionaries are currently available for translation from english to czech language (and the other way round), which come from this project <a title="http://svobodneslovniky.cz" href="http://svobodneslovniky.cz" target="_blank" rel="noopener">http://svobodneslovniky.cz</a>. There are also the first two applications that allow the use of dictionaries (see below).</p><br />
+<p><div class="bold">Current state - first phase:</div>
+V této první fázi projektu jsou k dispozici dvě aplikace, které je možné využít pro překlad (zatím opravdu pouze mezi anglickým a českým jazykem). In this first phase of the project, there are two applications available that can be used for translation (indeed only between English and Czech, for now). Firstly you can use this site, on which you can use EasyDict in its web version (on the right side of the page). The web version is written in Python, CherryPy and Brython.
+<br />
+Dále je k dispozici ke stažení desktopová verze napsaná v Pythonu, 
+There is also a desktop version written in Python, PyGObject and GTK3 available for download, which can translate just like this web version, but has some more user friendly features (for example: translation directly from system clipboard, so just copy the text anywhere in the system - for example with Contro;+C - and if the EasyDict application window is open, the translation will take place automatically).<br /> Both versions of the application have the same database backend, which is TinyDB with my own extension for orjson (orjson is the fastest implementation of json format for Python).
+(in-memory-storage pro desktopovou aplikaci a RethinkDB pro tu webovou, ...).
+So far, this variant seems to me to be the best and sufficient, but in the next phases of the project another database can be used too (in-memory-storage for desktop app and RethinkDB for the web app, ...). <br />
+Both applications are in the alpha version stage and will need some more tunning and of course addition of some functions,
+but they work well for the translation itself (if you find a bug, do not hesitate to report it).
+</p><br /><p><div class="bold">Future state - second phase:</div>
+
+Creating the simplest and most user-friendly possible <a title="CMS" href="https://cs.wikipedia.org/wiki/CMS" target="_blank" rel="noopener">CMS</a>, which will allow users to edit existing or insert new translations. At this stage, I would still like to limit testing to the English-Czech dictionary. A volunteer or volunteers must also be found to authorize new submitted translations.
+(nicméně když tak si vystačím sám a moje kamarádka Alex z Anglie, která si tím procvičí češtinu a zajistí maximální kvalitu anglického překladu),
+
+
+
+ které by se následně dostali do slovníku. </p><br />
+		<p><div class="bold">Budoucí stav -&gt; třetí fáze:</div>Připravit obě aplikace i CMS na použití dalších slovníků a začít propagovat EasyDict kdekoliv po světě, aby vznikaly další otevřené slovníky a komunita okolo nich.</p>
+		<hr />
+		<h1 style="text-align: center;">Podpořte projekt EasyDict!</h1>
+		<p style="text-align: center;">Tento otevřený projekt je vytvářen ve volném čase jedním člověkem (jehož jméno najdete v patičce). Budu rád, pokud se rozhodnete mě jakkoliv v mém úsílí podpořit finančně. Níže uvádím možnosti, kterými tak můžete učinit. Pokud bych viděl, že je o projekt a jeho vizi zájem, tak v budoucnu můžou přibýt i další možnosti podpory (např. přes Startovač a nebo třeba Patreon).</p>
+		<p>
+			<br />
+			<div class="bold"><a name="bank">Bank account number:</a></div>
+			<div class="hover_img"><a href="#bank">100337997/2250<span><img src="/static/images/qrcode_bank.svg" alt="Bank account QRCode"/></span></a></div>
+			<br />
+			<div class="bold"><a name="iban">IBAN:</a></div>
+			<div class="hover_img"><a href="#iban">CZ71 2250 0000 0001 0033 7997<span><img src="/static/images/qrcode_iban.svg" alt="IBAN QRCode"/></span></a></div>
+			<br />
+			<div class="bold"><a name="btc">Bitcoin adress:</a></div>
+			<div class="hover_img"><a href="#btc">16tpbHNWghAgovpxxN63sHsf7P1tyH4vyd<span><img src="/static/images/qrcode_bt.svg" alt="Bitcoin QRCode"/></span></a></div>
+			<br />
+			<div class="bold"><a name="ltc">Litecoin adress:</a></div>
+			<div class="hover_img"><a href="#ltc">LMhUwNiTDqA9WKE3SuboEdddzK2Eo93gKe<span><img src="/static/images/qrcode_lt.svg" alt="Litecoin QRCode"/></span></a></div>
+			<br />
+			<p style="text-align: center;">(V případě zájmu mohu přidat adresy i na další cryptoměny, nebojte se si o ně napsat)</p>
+		</p>
+	</main>
+	<side_bar>
+		<div class="search_form">
+			<fieldset>
+				<input type="text" name="searched_text" size="10" maxlength="20" id="searched_text" />
+				<button type="submit" id="button_search">Search</button>
+				<select id="language">
+					<option>English</option>
+					<option>Czech</option>
+				</select>
+			</fieldset>
+			<fieldset>
+				<label>
+					<input type="radio" id="whole_word" name="optionsRadios" value="whole_word" checked>Whole word</label>
+				<label>
+					<input type="radio" id="fulltext" name="optionsRadios" value="fulltext"/>Fulltext</label>
+			</fieldset>
+			<hr />
+		</div>
+		<div id="results">The results of search will be here:</div>
+		<div class="rest">
+			<hr />News: TBA</div>
+	</side_bar>
+	<footer>Jiří Němec, 2020</footer>
+</body>
+
+</html>

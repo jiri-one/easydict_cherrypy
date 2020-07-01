@@ -3,7 +3,8 @@ import cherrypy
 
 conf = {
     "global": {
-    "server.socket_host": "0.0.0.0"
+    "server.socket_host": "0.0.0.0",
+    "tools.sessions.on": True
     },
     "/static": {
     "tools.staticdir.on": True,

@@ -6,13 +6,25 @@ from html_generator import db_search, CreateHtml
 from settings import file_path
 
 create_html = CreateHtml()
-main_site = open(file_path("index.html"), "r", encoding="utf8").read()
+main_site = open(file_path("index_cze.html"), "r", encoding="utf8").read()
 
 
 class EasyDictWeb(object):
-	@cherrypy.expose
+	@cherrypy.expose("test")
 	def index(self, **kwargs):
+		try:
+			if cherrypy.session["lang"] != kwargs["lang"] and kwargs["lang"] in ["cze", "eng"]:
+				cherrypy.session["lang"] = kwargs["lang"]
+		except:
+			pass
+
+		if 'lang' not in cherrypy.session:
+			cherrypy.session["lang"] = "eng"
+
+		main_site = open(file_path(f"index_{cherrypy.session['lang']}.html"), "r", encoding="utf8").read()
+		print(cherrypy.url(relative=True))
 		return main_site
+	
 
 @cherrypy.expose
 class SearchEngine(object):
