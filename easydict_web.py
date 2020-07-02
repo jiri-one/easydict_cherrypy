@@ -1,7 +1,7 @@
 # main imports
 import cherrypy
 # imports from my other files with classes, methods and confs
-from easydict_web_conf import conf_desktop, conf_uwsgi
+from easydict_web_conf import conf_desktop
 from html_generator import db_search, CreateHtml
 from settings import file_path
 
@@ -55,23 +55,8 @@ class SearchEngine(object):
 			print(language, searched_text, fulltext)
 			return language, searched_text, fulltext	
 
-def run_easydict(target):
-	if target == "desktop":
-		# the code below is for running it on desktop for testing purposes
-		if __name__ == "__main__":
-			easydict = EasyDictWeb()
-			easydict.searchengine = SearchEngine()
-			cherrypy.quickstart(easydict, '/', conf_desktop)
-	elif target == "uwsgi":
-		# and this code below is for running cherrypy under uwsgi on server
-		easydict = EasyDictWeb()
-		easydict.searchengine = SearchEngine()
-		cherrypy.config.update({"tools.sessions.on": True})
-		cherrypy.config.update({'tools.encode.encoding': 'utf-8'})
-		wsgiapp = cherrypy.Application(easydict, '/', conf_uwsgi)
-	else:
-		print("Please, choose target between 'desktop' or 'uwsgi'")
-
-run_easydict("desktop") # comment it on server
-#run_easydict("uwsgi") # uncomment it on server
+if __name__ == "__main__":
+	easydict = EasyDictWeb()
+	easydict.searchengine = SearchEngine()
+	cherrypy.quickstart(easydict, '/', conf_desktop)
 

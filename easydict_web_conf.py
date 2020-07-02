@@ -21,6 +21,7 @@ conf_desktop = {
 conf_uwsgi = {
     "global": {
     "engine.autoreload.on": False,
+    "tools.encode.encoding": "utf-8"
     #"environment": "embedded" #for uwsgi this line is not necessary
     },
     "/static": {
