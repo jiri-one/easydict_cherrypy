@@ -52,7 +52,6 @@ class SearchEngine(object):
 			fulltext = False
 		#check of searched_text
 		if len(searched_text.split()) == 1: #check if the input is just one word
-			print(language, searched_text, fulltext)
 			return language, searched_text, fulltext	
 
 if __name__ == "__main__":
