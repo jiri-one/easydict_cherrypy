@@ -11,7 +11,7 @@ class EasyDictWeb(object):
 	@cherrypy.expose("test")
 	def index(self, **kwargs):
 		try: # this condition and try statement is necessary for set language correctly; it check: if the ?lang=XXX is changed and if XXX is in known languages, then change default language. Because kwargs["lang"] maybe do not exists, then I need to "try:" it firstly
-			if cherrypy.session["lang"] != kwargs["lang"] and kwargs["lang"] in ["cze", "eng"]: # in the future, this small list will be replaced from with DB entries
+			if cherrypy.session["lang"] != kwargs["lang"] and kwargs["lang"] in ["cze", "eng"]: # in the future, this small list will be replaced with DB entries
 				cherrypy.session["lang"] = kwargs["lang"]
 		except:
 			pass
@@ -41,7 +41,7 @@ class SearchEngine(object):
 	def validate_searchengine_input(self, language, searched_text, fulltext):
 		"""This method is here for valitadion input from ajax and normalize the input for search in db."""
 		#language check
-		if language == "Czech":
+		if language == "Czech" or language == "Česky":
 			language = "cze"
 		else:
 			language = "eng"

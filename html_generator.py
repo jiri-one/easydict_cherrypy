@@ -15,7 +15,7 @@ def db_search(language, text, fulltext):
 
 class CreateHtml:
     def finish_html(self, results):
-        self.html_string = ""    
+        self.html_string = ""
         for row in results:
             self.html_string = self.html_string + self.create_html(row[0])
 
