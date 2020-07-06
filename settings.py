@@ -15,6 +15,18 @@ def file_path(file_name):
 	"""This function return full absolute path of given file_name, but it works correctly only when the filename is unique in all folders and subfolders!!!"""
 	file_abs_path = path.abspath(glob(f"**/{file_name}", recursive=True)[0])
 	return file_abs_path
+##############
+################
+from rethinkdb import RethinkDB
+r = RethinkDB()
+conn = r.connect( "localhost", 28015).repl()
+mydict = r.db("dicts").table("eng_cze")
+
+
+################
+
+default_db = "rethinkdb"
+##############
 
 # main db with eng-cze dict (name is just db, but table is eng_cze and EasyDict works with that table)
 db = TinyDB(file_path("eng-cze.json"), storage=CachingMiddleware(ORJSONStorage))
