@@ -5,16 +5,17 @@ from settings import eng_cze, where, default_db, mydict, conn, r
 class Search(object):
     def __init__(self, language, text, fulltext):
         self.language = language
+        self.text = text
         if fulltext == False:
-            #self.text = rf"(?i)(^|[, ?.!]){text}([, ?.!]|$)"
-            #self.text = rf"(?i)([ \-',]|^){text}([ \-',]|$)"
-            self.text = rf"(?i)(?:^|[[:punct:]]| ){text}(?:[[:punct:]]| |$)"
+            #self.searched_text = rf"(?i)(^|[, ?.!]){text}([, ?.!]|$)"
+            #self.searched_text = rf"(?i)([ \-',]|^){text}([ \-',]|$)"
+            self.searched_text = rf"(?i)(?:^|[[:punct:]]| ){text}(?:[[:punct:]]| |$)"
         else:
-            self.text = rf'(?i){text}'
+            self.searched_text = rf'(?i){text}'
         if default_db == "rethinkdb":
-            self.search_results = list(mydict.filter(lambda words: words[self.language].match(self.text)).run(conn))
+            self.search_results = list(mydict.filter(lambda words: words[self.language].match(self.searched_text)).run(conn))
         if default_db == "tinydb":
-            self.search_results = eng_cze.search(where(self.language).search(self.text))
+            self.search_results = eng_cze.search(where(self.language).search(self.searched_text))
         
         self.results = self.finalize_search()        
     

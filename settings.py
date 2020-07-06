@@ -20,7 +20,7 @@ def file_path(file_name):
 from rethinkdb import RethinkDB
 r = RethinkDB()
 conn = r.connect( "localhost", 28015).repl()
-mydict = r.db("dicts").table("eng_cze")
+mydict = r.db("dicts").table("eng-cze")
 
 
 ################
