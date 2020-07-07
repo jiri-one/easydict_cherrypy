@@ -15,7 +15,7 @@ def db_search(language, text, fulltext):
 
 class CreateHtml:
     def finish_html(self, results):
-        self.html_string = ""    
+        self.html_string = ""
         for row in results:
             self.html_string = self.html_string + self.create_html(row[0])
 
@@ -32,8 +32,8 @@ class CreateHtml:
             self.special = ""        
     
         html = f"""
-        <p style="font-size: 22px"><b><span style="color: #ffffff;">{row["eng"]}</span></b>
-        <br>&emsp;<span style="color: #ffffff;">{row["cze"]}{self.notes}{self.special}</span>
+        <p>{row["eng"]}</b>
+        <br>&emsp;{row["cze"]}{self.notes}{self.special}<hr />
         </p>
         """
         return html
