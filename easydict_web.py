@@ -2,7 +2,7 @@
 import cherrypy
 # imports from my other files with classes, methods and confs
 from easydict_web_conf import conf_desktop
-from html_generator import db_search, CreateHtml
+from html_generator import Search, CreateHtml
 from settings import file_path
 
 create_html = CreateHtml()
@@ -27,11 +27,10 @@ class EasyDictWeb(object):
 class SearchEngine(object):
 	def POST(self, language, searched_text, fulltext):
 		if language and searched_text and fulltext:
-			print(language, searched_text, fulltext)
 			try:				
 				language, searched_text, fulltext = self.validate_searchengine_input(language, searched_text, fulltext)
-				results = db_search(language, searched_text, fulltext)
-				html = create_html.finish_html(results)
+				search = Search(language, searched_text, fulltext)
+				html = create_html.finish_html(search.results)
 				return html
 			except:
 				return "Nothing was found or bad input. Try to search just one word."
