@@ -7,9 +7,9 @@ class Search(object):
         self.language = language
         self.text = text
         if fulltext == False:
-            #self.searched_text = rf"(?i)(^|[, ?.!]){text}([, ?.!]|$)"
-            #self.searched_text = rf"(?i)([ \-',]|^){text}([ \-',]|$)"
-            self.searched_text = rf"(?i)(?:^|[[:punct:]]| ){text}(?:[[:punct:]]| |$)"
+            #self.searched_text = rf"(?i)(^|[, ?.!]){text}([, ?.!]|$)" #another possibility
+            #self.searched_text = rf"(?i)([ \-',]|^){text}([ \-',]|$)" #another possibility
+            self.searched_text = rf"(?i)(?:^|[[:punct:]]| ){text}(?:[[:punct:]]| |$)" #best version
         else:
             self.searched_text = rf'(?i){text}'
         if default_db == "rethinkdb":
