@@ -25,7 +25,7 @@ mydict = r.db("dicts").table("eng-cze")
 
 ################
 
-default_db = "rethinkdb"
+default_db = "tinydb"
 ##############
 
 # main db with eng-cze dict (name is just db, but table is eng_cze and EasyDict works with that table)

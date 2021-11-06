@@ -93,3 +93,7 @@ fieldset {
 .img_flag {
 	margin: 3px
 }
+
+a:visited {
+	color: pink;
+}
